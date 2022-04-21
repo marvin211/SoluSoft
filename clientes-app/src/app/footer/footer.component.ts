@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
 })
 
 export class FooterComponent {
-  public autor: any = {nombre:'Keyzer', apellido:'Hernández'};
+  public autor: any = {empresa:'SoluSoft', software:'MasterController'};
 }
