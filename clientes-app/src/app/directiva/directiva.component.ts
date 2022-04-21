@@ -13,5 +13,11 @@ export class DirectivaComponent {
     'Keyzer Hernández: Desarrollador FrontEnd',
     'Erich Gálvez: Desarrollador BackEnd'];
 
+  habilitar: boolean = false;
+
   constructor() { }
+
+  setHabilitar(): void {
+    this.habilitar = (this.habilitar==false)? true: false;
+  }
 }
