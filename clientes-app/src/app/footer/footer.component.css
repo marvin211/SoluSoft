@@ -1,6 +1,6 @@
 .footer {
   position: absolute;
-  bottom: 0px;
+  bottom: auto;
   height: 60px;
   width: 100%;
 }
