@@ -10,11 +10,12 @@
     <table class="table table-bordered table-striped">
       <thead>
         <tr>
-          <th>id</th>
-          <th>nombre</th>
-          <th>apellido</th>
-          <th>email</th>
-          <th>fecha</th>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Apellido</th>
+          <th>Email</th>
+          <th>Fecha</th>
+          <th>Editar</th>
         </tr>
       </thead>
       <tbody>
@@ -24,6 +25,9 @@
           <td>{{ cliente.apellido }}</td>
           <td>{{ cliente.email }}</td>
           <td>{{ cliente.createAt }}</td>
+          <td>
+            <button type="button" name="editar" [routerLink]="['/clientes/form', cliente.id]" class="btn btn-primary btn-sm">Editar</button>
+          </td>
         </tr>
       </tbody>
     </table>
