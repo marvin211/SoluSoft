@@ -3,8 +3,8 @@ import { Cliente } from './cliente';
 import { Observable, throwError } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
-import swal from "sweetalert2";
 import { Router } from '@angular/router';
+import swal from "sweetalert2";
 // import { of, Observable } from 'rxjs';
 // import { map } from 'rxjs/operators';
 // import { CLIENTES } from './clientes.json';
@@ -24,7 +24,13 @@ export class ClienteService {
   }
 
   create(cliente: Cliente) : Observable<Cliente> {
-    return this.http.post<Cliente>(this.urlEndpoint, cliente, {headers: this.httpHeaders})
+    return this.http.post<Cliente>(this.urlEndpoint, cliente, {headers: this.httpHeaders}).pipe(
+      catchError(e => {
+        console.error(e.error.mensaje);
+        swal.fire(e.error.mensaje, e.error.error, 'error');
+        return throwError(e);
+      })
+    )
   }
 
   getCliente(id): Observable<Cliente> {
@@ -39,11 +45,23 @@ export class ClienteService {
   }
 
   update(cliente: Cliente): Observable<Cliente>{
-    return this.http.put<Cliente>(`${this.urlEndpoint}/${cliente.id}`, cliente, {headers: this.httpHeaders})
+    return this.http.put<Cliente>(`${this.urlEndpoint}/${cliente.id}`, cliente, {headers: this.httpHeaders}).pipe(
+      catchError(e => {
+        console.error(e.error.mensaje);
+        swal.fire(e.error.mensaje, e.error.error, 'error');
+        return throwError(e);
+      })
+    )
   }
 
   delete(id: number): Observable<Cliente>{
-    return this.http.delete<Cliente>(`${this.urlEndpoint}/${id}`, {headers: this.httpHeaders})
+    return this.http.delete<Cliente>(`${this.urlEndpoint}/${id}`, {headers: this.httpHeaders}).pipe(
+      catchError(e => {
+        console.error(e.error.mensaje);
+        swal.fire(e.error.mensaje, e.error.error, 'error');
+        return throwError(e);
+      })
+    )
   }
 
 }
