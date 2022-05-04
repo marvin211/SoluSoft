@@ -2,8 +2,8 @@
 <div class="card bg-dark text-white">
   <div class="card-header">{{ titulo }}</div>
   <div class="card-body">
-    
-    <form (ngSubmit) = "create()">
+
+    <form>
 <br>
       <div class="form-group row">
         <label for="nombre" class="col-form-label col-sm-2">Nombre</label>
@@ -28,7 +28,10 @@
 <br>
       <div class="form-group row">
         <div class="col-sm-6">
-          <button class="btn btn-primary" role="button">Crear</button>
+          <button class="btn btn-primary" role="button" (click)='create()' *ngIf="!cliente.id else elseBlock"></button>
+          <ng-template #elseBlock>
+              <button class="btn btn-primary" role="button" (click)='update()'>Editar</button>
+          </ng-template>
         </div>
       </div>
     </form>
