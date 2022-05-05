@@ -54,7 +54,7 @@ export class ClienteService {
         return throwError(e);
       })
     )
-  }  PRIMERO METODO */
+  }  PRIMER METODO */
 
   // SEGUNDO METODO
   update(cliente: Cliente): Observable<Cliente>{
