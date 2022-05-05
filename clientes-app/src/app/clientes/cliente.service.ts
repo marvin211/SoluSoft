@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Cliente } from './cliente';
 import { Observable, throwError } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { catchError } from 'rxjs/operators';
+import { map, catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import swal from "sweetalert2";
 // import { of, Observable } from 'rxjs';
@@ -23,8 +23,9 @@ export class ClienteService {
     return this.http.get<Cliente[]>(this.urlEndpoint);
   }
 
-  create(cliente: Cliente) : Observable<any> {
-    return this.http.post<any>(this.urlEndpoint, cliente, {headers: this.httpHeaders}).pipe(
+  create(cliente: Cliente) : Observable<Cliente> {
+    return this.http.post(this.urlEndpoint, cliente, {headers: this.httpHeaders}).pipe(
+      map((response: any) => response.cliente as Cliente),
       catchError(e => {
         console.error(e.error.mensaje);
         swal.fire(e.error.mensaje, e.error.error, 'error');
@@ -44,8 +45,21 @@ export class ClienteService {
     );
   }
 
+  /* PRIMER METODO
   update(cliente: Cliente): Observable<any>{
     return this.http.put<any>(`${this.urlEndpoint}/${cliente.id}`, cliente, {headers: this.httpHeaders}).pipe(
+      catchError(e => {
+        console.error(e.error.mensaje);
+        swal.fire(e.error.mensaje, e.error.error, 'error');
+        return throwError(e);
+      })
+    )
+  }  PRIMERO METODO */
+
+  // SEGUNDO METODO
+  update(cliente: Cliente): Observable<Cliente>{
+    return this.http.put(`${this.urlEndpoint}/${cliente.id}`, cliente, {headers: this.httpHeaders}).pipe(
+      map((response: any) => response.cliente as Cliente),
       catchError(e => {
         console.error(e.error.mensaje);
         swal.fire(e.error.mensaje, e.error.error, 'error');
