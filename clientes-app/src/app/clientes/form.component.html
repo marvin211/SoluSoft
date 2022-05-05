@@ -1,15 +1,18 @@
-<br>
-<ul class="alert alert-danger" *ngIf="errores?.length > 0">
-  <li *ngFor="let err of errores">
-    {{ err }}
-  </li>
-</ul>
+<div class="alert alert-danger" *ngIf="errores?.length > 0">
+  <!-- <ul class="alert alert-danger" *ngIf="errores?.length > 0"> -->
+  <ul>
+    <li *ngFor="let err of errores">
+      {{ err }}
+    </li>
+  </ul>
+</div>
+
 <div class="card bg-dark text-white">
   <div class="card-header">{{ titulo }}</div>
   <div class="card-body">
 
     <form #formularioCliente="ngForm">
-      <br>
+      
       <div class="form-group row">
         <label for="nombre" class="col-form-label col-sm-2">Nombre</label>
         <div class="col-sm-6">
