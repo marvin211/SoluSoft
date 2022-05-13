@@ -18,6 +18,10 @@ import { registerLocaleData } from '@angular/common';
 import localeES from '@angular/common/locales/es-GT';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { MatDatepickerModule } from '@angular/material/datepicker';
+// import { MatNativeDateModule } from '@angular/material/core';
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
+
 registerLocaleData(localeES, 'es-GT');
 
 const routes: Routes = [
@@ -44,9 +48,12 @@ const routes: Routes = [
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot(routes),
-    BrowserAnimationsModule
+    BrowserAnimationsModule, MatDatepickerModule, MatMomentDateModule //, MatNativeDateModule
   ],
-  providers: [ClienteService, {provide: LOCALE_ID, useValue: 'es-GT' }],
+  providers: [
+    ClienteService,
+    {provide: LOCALE_ID, useValue: 'es-GT' }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
