@@ -16,6 +16,7 @@ import { FormsModule } from '@angular/forms';
 
 import { registerLocaleData } from '@angular/common';
 import localeES from '@angular/common/locales/es-GT';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 registerLocaleData(localeES, 'es-GT');
 
@@ -42,7 +43,8 @@ const routes: Routes = [
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    BrowserAnimationsModule
   ],
   providers: [ClienteService, {provide: LOCALE_ID, useValue: 'es-GT' }],
   bootstrap: [AppComponent]
