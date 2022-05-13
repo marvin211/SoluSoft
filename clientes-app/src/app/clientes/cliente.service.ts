@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+// import { formatDate, DatePipe } from '@angular/common';
 import { Cliente } from './cliente';
 import { Observable, throwError } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -19,8 +20,20 @@ export class ClienteService {
   constructor(private http: HttpClient, private router: Router) { }
 
   getClientes(): Observable<Cliente[]> {
-    // return of(CLIENTES);
-    return this.http.get<Cliente[]>(this.urlEndpoint);
+    return this.http.get(this.urlEndpoint).pipe(
+      map(response => {
+
+        let clientes = response as Cliente[];
+
+        return clientes.map(cliente => {
+          cliente.nombre = cliente.nombre.toUpperCase();
+          // let datePipe = new DatePipe('es-GT');
+          // cliente.createAt = formatDate(cliente.createAt,'dd-mm-yyyy','es-GT');
+          // cliente.createAt = datePipe.transform(cliente.createAt,'EEE dd MMM yyyy');
+          return cliente;
+        });
+      })
+    );
   }
 
   create(cliente: Cliente) : Observable<Cliente> {
@@ -70,7 +83,7 @@ export class ClienteService {
         if(e.status==400){
           return throwError(e);
         }
-        
+
         console.error(e.error.mensaje);
         swal.fire(e.error.mensaje, e.error.error, 'error');
         return throwError(e);
