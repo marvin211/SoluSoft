@@ -12,7 +12,7 @@
   <div class="card-body">
 
     <form #formularioCliente="ngForm">
-      
+
       <div class="form-group row">
         <label for="nombre" class="col-form-label col-sm-2">Nombre</label>
         <div class="col-sm-6">
@@ -58,6 +58,13 @@
               * Debe tener un formato válido, ej: correo@ejemplo.com
             </div>
           </div>
+        </div>
+      </div>
+      <br>
+      <div class="form-group row">
+        <label for="createAt" class="col-form-label col-sm-2">Fecha</label>
+        <div class="col-sm-6">
+          <input type="date" class="form-control" [(ngModel)]="cliente.createAt" name="createAt">
         </div>
       </div>
       <br>
