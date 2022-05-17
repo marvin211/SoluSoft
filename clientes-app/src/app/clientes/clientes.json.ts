@@ -1,6 +1,7 @@
 import { Cliente } from './cliente';
 
 export const CLIENTES: Cliente[] = [
+/*
 {
   id: 1,
   nombre: 'Maisie',
@@ -181,4 +182,5 @@ export const CLIENTES: Cliente[] = [
   // telefono: '87654321',
   createAt: '2022-05-08'
 }
+*/
 ];

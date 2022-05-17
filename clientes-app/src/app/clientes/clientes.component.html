@@ -14,7 +14,7 @@
     <table class="table table-bordered table-striped" *ngIf="clientes?.length>0">
       <thead>
         <tr>
-          <th>ID</th>
+          <th>Foto</th>
           <th>Nombre</th>
           <th>Apellido</th>
           <th>Email</th>
@@ -25,10 +25,21 @@
       </thead>
       <tbody>
         <tr *ngFor="let cliente of clientes">
+          <!-- Dejar el ID como botón para acceder a los detalles del cliente
           <td>
-            <button type="button" [routerLink]="['/clientes/ver', cliente.id]" class="btn btn-outline-dark btn-sm">
+            <button type="button" [routerLink]="['/clientes/ver', cliente.id]" class="btn btn-outline-dark btn-sm"> Esto está comentaado
+            <button type="button" (click)="abrirModal(cliente)" class="btn btn-outline-dark btn-sm">
               {{ cliente.id }}
             </button>
+          </td> -->
+          <!-- Dejar la foto como boton para acceder a los detalles del cliente -->
+          <td>
+            <!-- Si el cliente tiene foto -->
+            <img (click)="abrirModal(cliente)" *ngIf="cliente?.foto" src="http://localhost:8080/api/uploads/img/{{cliente.foto}}"
+            alt="{{cliente.foto}}" class="img-tumbnail rounded" style="max-width: 50px; max-height: 50px; cursor: pointer;">
+            <!-- Si el cliente no tiene foto -->
+            <img (click)="abrirModal(cliente)" *ngIf="!cliente?.foto" src="http://localhost:8080/images/usuario.png"
+            alt="sin-foto" class="img-tumbnail rounded" style="max-width: 50px; max-height: 50px; cursor: pointer;">
           </td>
           <td>{{ cliente.nombre }}</td>
           <td>{{ cliente.apellido | uppercase }}</td>
@@ -46,3 +57,7 @@
     <paginator-nav *ngIf="paginador" [paginador] = "paginador"></paginator-nav>
   </div>
 </div>
+
+
+<!-- Detalle del cliente -->
+<detalle-cliente *ngIf="clienteSeleccionado" [cliente] = "clienteSeleccionado"></detalle-cliente>
