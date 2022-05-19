@@ -1,5 +1,6 @@
 <div class="card border-dark mb-3">
   <div class="card-body">
+    <!-- <h1>Texto de prueba</h1> -->
     <h3 class="card-title" style="color: #118ab2; font-weight: normal; font-size: 25px; font-family: fantasy; text-transform: uppercase;">
       Registro de clientes
     </h3>
@@ -28,7 +29,7 @@
       <tbody>
         <tr *ngFor="let cliente of clientes">
           <!-- Dejar el ID como botón para acceder a los detalles del cliente -->
-          <td> <button type="button" (click)="abrirModal(cliente)" class="btn btn-outline-dark btn-sm">
+          <td> <button type="button" (click)="abrirModal(cliente)" class="btn btn-outline-secondary btn-sm">
               {{ cliente.id }} </button> </td>
           <td>{{ cliente.nombre }}</td>
           <td>{{ cliente.apellido }}</td>

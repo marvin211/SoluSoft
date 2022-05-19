@@ -24,11 +24,13 @@ import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { DetalleComponent } from './clientes/detalle/detalle.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { ProductosComponent } from './productos/productos.component';
+import { Form2Component } from './productos/form2.component';
+import { DetalleProdComponent } from './productos/detalle-prod/detalle-prod.component';
 
 registerLocaleData(localeES, 'es-GT');
 
 const routes: Routes = [
-  {path: '', redirectTo: '/clientes', pathMatch: 'full'},
+  {path: '', redirectTo: '/productos', pathMatch: 'full'},
   {path: 'inicio', component: InicioComponent},
   {path: 'clientes', component: ClientesComponent},
   {path: 'clientes/page/:page', component: ClientesComponent},
@@ -49,7 +51,9 @@ const routes: Routes = [
     PaginatorComponent,
     DetalleComponent,
     InicioComponent,
-    ProductosComponent
+    ProductosComponent,
+    Form2Component,
+    DetalleProdComponent
   ],
   imports: [
     BrowserModule,

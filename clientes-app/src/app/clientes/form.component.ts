@@ -6,7 +6,8 @@ import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-form',
-  templateUrl: './form.component.html'
+  templateUrl: './form.component.html',
+  styleUrls: ['./form.component.css']
 })
 export class FormComponent implements OnInit {
 
