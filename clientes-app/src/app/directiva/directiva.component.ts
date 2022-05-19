@@ -13,11 +13,15 @@ export class DirectivaComponent {
     'Keyzer Hernández: Desarrollador FrontEnd',
     'Erich Gálvez: Desarrollador BackEnd'];
 
+  title = 'Sistema MasterController';
+
+  empresa: string = 'SoluSoft';
+
   habilitar: boolean = false;
 
   constructor() { }
 
   setHabilitar(): void {
-    this.habilitar = (this.habilitar==false)? true: false;
+    this.habilitar = (this.habilitar == false) ? true : false;
   }
 }

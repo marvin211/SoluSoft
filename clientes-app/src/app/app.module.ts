@@ -22,17 +22,20 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 // import { MatNativeDateModule } from '@angular/material/core';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { DetalleComponent } from './clientes/detalle/detalle.component';
+import { InicioComponent } from './inicio/inicio.component';
+import { ProductosComponent } from './productos/productos.component';
 
 registerLocaleData(localeES, 'es-GT');
 
 const routes: Routes = [
   {path: '', redirectTo: '/clientes', pathMatch: 'full'},
-  {path: 'directivas', component: DirectivaComponent},
+  {path: 'inicio', component: InicioComponent},
   {path: 'clientes', component: ClientesComponent},
   {path: 'clientes/page/:page', component: ClientesComponent},
   {path: 'clientes/form', component: FormComponent},
-  {path: 'clientes/form/:id', component: FormComponent}
-  // {path: 'clientes/ver/:id', component: DetalleComponent}
+  {path: 'clientes/form/:id', component: FormComponent},
+  {path: 'productos', component: ProductosComponent},
+  {path: 'solusoft', component: DirectivaComponent}
 ];
 
 @NgModule({
@@ -44,7 +47,9 @@ const routes: Routes = [
     ClientesComponent,
     FormComponent,
     PaginatorComponent,
-    DetalleComponent
+    DetalleComponent,
+    InicioComponent,
+    ProductosComponent
   ],
   imports: [
     BrowserModule,

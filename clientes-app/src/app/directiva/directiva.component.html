@@ -1,7 +1,14 @@
+<h1>{{ title }}</h1>
+
+<h3>Desarrollado por {{empresa}}</h3>
+
 <br>
-<div class="card">
+
+<h4>Equipo de desarrollo:</h4>
+
+<div class="card" style="width: 20rem;">
   <div class="card-header">
-    Listado de Desarroladores
+    <!-- Listado de Desarroladores -->
     <button type="button" (click)="setHabilitar()" class="btn btn-primary my-3">{{habilitar==true? 'Ocultar': 'Mostrar'}}</button>
   </div>
   <ul class="list-group" *ngIf="habilitar == true">

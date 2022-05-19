@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Cliente } from './cliente';
 import { ClienteService } from './cliente.service';
-import { Region } from './region';
 import { Router, ActivatedRoute } from '@angular/router';
 import swal from 'sweetalert2';
 
@@ -12,7 +11,6 @@ import swal from 'sweetalert2';
 export class FormComponent implements OnInit {
 
   public cliente: Cliente = new Cliente();
-  regiones: Region[];
   public titulo: string = "Crear Cliente"
 
   public errores: string[];
@@ -23,7 +21,6 @@ export class FormComponent implements OnInit {
 
   ngOnInit(): void {
     this.cargarCliente();
-    this.clienteService.getRegiones().subscribe(regiones => this.regiones = regiones);
   }
 
   cargarCliente(): void{
@@ -49,17 +46,6 @@ export class FormComponent implements OnInit {
     });
   }
 
-  /* PRIMER METODO
-  update():void{
-    this.clienteService.update(this.cliente)
-    .subscribe( json => {
-      this.router.navigate(['/clientes'])
-      swal.fire('Cliente Actualizado', `Cliente ${json.cliente.nombre} actualizado con éxito!`, 'success')
-    }
-    )
-  } PRIMER METODO */
-
-  // SEGUNDO METODO
   update():void{
     console.log(this.cliente);
     this.clienteService.update(this.cliente)
@@ -72,13 +58,6 @@ export class FormComponent implements OnInit {
       console.error('Código del error desde el backend: ' + err.status);
       console.error(err.error.errors);
     });
-  }
-
-  compararRegion(o1: Region, o2: Region): boolean {
-    if (o1 === undefined && o2 === undefined) {
-      return true;
-    }
-    return o1 === null || o2 === null || o1 === undefined || o2 === undefined ? false : o1.id === o2.id;
   }
 
 }

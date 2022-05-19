@@ -1,53 +1,55 @@
 <div class="abrir-modal animacion fadeIn" *ngIf="modalService.modal">
 
   <div class="modal" tabindex="-1" style="display:block;">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
+
         <div class="modal-header">
-          <h5 class="modal-title">{{ titulo }}</h5>
+          <h3 class="modal-title">{{ titulo }}</h3>
           <button (click)="cerrarModal()" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
+
         <div class="modal-body">
           <div class="container">
-            <div class="row">
-              <div class="col-sm">
-
-                <ul *ngIf="cliente" class="list-group text.-dark mb-3">
-                  <li class="list-group-item active">{{ cliente.nombre }}</li>
-                  <li class="list-group-item">{{ cliente.apellido }}</li>
-                  <li class="list-group-item">{{ cliente.email }}</li>
-                  <li class="list-group-item">{{ cliente.createAt | date:"fullDate" }}</li>
-                  <li class="list-group-item">{{ cliente.region.nombre }}</li>
-                </ul>
-
-                <div class="input-group mb-3">
-                  <input (change)="seleccionarFoto($event)" type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
-                  <button (click)="subirFoto()" class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04">Subir</button> <!-- [disabled]="!fotoSeleccionada" -->
-                </div>
-
-                <div *ngIf="progreso > 0" class="progress" style="height: 25px;">
-                  <div class="progress-bar progress-bar-striped" role="progressbar" [ngStyle]="{width: progreso+'%'}" attr.aria-valuenow="{{progreso}}" aria-valuemin="0" aria-valuemax="100">
-                    {{progreso}}%
-                  </div>
-                </div>
-
-              </div>
-              <div class="col-sm">
-                <img *ngIf="cliente?.foto" src="http://localhost:8080/api/uploads/img/{{cliente.foto}}" alt="{{cliente.foto}}" class="img-tumbnail rounded" style="max-width: 200px; max-height: 200px;">
-              </div>
-            </div>
+            <table *ngIf="cliente" class="table table-bordered table-hover">
+              <thead class="table-warning">
+                <tr>
+                  <th scope="col">Descipción</th>
+                  <th scope="col">Datos</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr scope="row">
+                  <td>Nombre</td>
+                  <td>{{ cliente.nombre }}</td>
+                </tr>
+                <tr scope="row">
+                  <td>Apellido</td>
+                  <td>{{ cliente.apellido }}</td>
+                </tr>
+                <tr scope="row">
+                  <td>Número de NIT</td>
+                  <td>{{ cliente.nit }}</td>
+                </tr>
+                <tr scope="row">
+                  <td>Número de Teléfono</td>
+                  <td>{{ cliente.telefono }}</td>
+                </tr>
+                <tr scope="row">
+                  <td>Fecha de Registro</td>
+                  <td>{{ cliente.createAt | date:"fullDate" }}</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
+
         <div class="modal-footer">
-          <button (click)="cerrarModal()" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button (click)="cerrarModal()" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
         </div>
+
       </div>
     </div>
   </div>
 
 </div>
-<!-- <div class="card bg-dark text-white">
-  <div class="card-header"></div>
-  <div class="card-body">
-  </div>
-</div> -->

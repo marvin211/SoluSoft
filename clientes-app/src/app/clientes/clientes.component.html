@@ -1,7 +1,8 @@
-<div class="card border-primary mb-3">
-  <div class="card-header">Clientes</div>
-  <div class="card-body text-primary">
-    <h5 class="card-title">Listado de clientes</h5>
+<div class="card border-dark mb-3">
+  <div class="card-body">
+    <h3 class="card-title" style="color: #118ab2; font-weight: normal; font-size: 25px; font-family: fantasy; text-transform: uppercase;">
+      Registro de clientes
+    </h3>
 
     <div class="my-2 text-left">
       <button class="btn btn-rounded btn-primary" type="button" [routerLink] = "['/clientes/form']">Crear Cliente</button>
@@ -11,40 +12,29 @@
       No hay registros en la Base de Datos!
     </div>
 
-    <table class="table table-bordered table-striped" *ngIf="clientes?.length>0">
+    <table class="table table-bordered table-hover" *ngIf="clientes?.length>0">
       <thead>
         <tr>
-          <th>Foto</th>
+          <th>Id</th>
           <th>Nombre</th>
           <th>Apellido</th>
-          <th>Email</th>
-          <th>Fecha</th>
+          <th>NIT</th>
+          <th>Teléfono</th>
+          <!-- <th>Fecha</th> -->
           <th>Editar</th>
           <th>Eliminar</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let cliente of clientes">
-          <!-- Dejar el ID como botón para acceder a los detalles del cliente
-          <td>
-            <button type="button" [routerLink]="['/clientes/ver', cliente.id]" class="btn btn-outline-dark btn-sm"> Esto está comentaado
-            <button type="button" (click)="abrirModal(cliente)" class="btn btn-outline-dark btn-sm">
-              {{ cliente.id }}
-            </button>
-          </td> -->
-          <!-- Dejar la foto como boton para acceder a los detalles del cliente -->
-          <td>
-            <!-- Si el cliente tiene foto -->
-            <img (click)="abrirModal(cliente)" *ngIf="cliente?.foto" src="http://localhost:8080/api/uploads/img/{{cliente.foto}}"
-            alt="{{cliente.foto}}" class="img-tumbnail rounded" style="max-width: 50px; max-height: 50px; cursor: pointer;">
-            <!-- Si el cliente no tiene foto -->
-            <img (click)="abrirModal(cliente)" *ngIf="!cliente?.foto" src="http://localhost:8080/images/usuario.png"
-            alt="sin-foto" class="img-tumbnail rounded" style="max-width: 50px; max-height: 50px; cursor: pointer;">
-          </td>
+          <!-- Dejar el ID como botón para acceder a los detalles del cliente -->
+          <td> <button type="button" (click)="abrirModal(cliente)" class="btn btn-outline-dark btn-sm">
+              {{ cliente.id }} </button> </td>
           <td>{{ cliente.nombre }}</td>
-          <td>{{ cliente.apellido | uppercase }}</td>
-          <td>{{ cliente.email }}</td>
-          <td>{{ cliente.createAt | date:"EEEE dd, MMMM yyyy"}}</td>
+          <td>{{ cliente.apellido }}</td>
+          <td>{{ cliente.nit }}</td>
+          <td>{{ cliente.telefono }}</td>
+          <!-- <td>{{ cliente.createAt | date:"dd/MM/yyyy"}}</td> -->
           <td>
             <button type="button" name="editar" [routerLink]="['/clientes/form', cliente.id]" class="btn btn-outline-primary btn-sm">Editar</button>
           </td>

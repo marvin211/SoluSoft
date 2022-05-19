@@ -1,15 +1,10 @@
 import { Injectable } from '@angular/core';
-// import { formatDate, DatePipe } from '@angular/common';
 import { Cliente } from './cliente';
-import { Region } from './region';
 import { Observable, throwError } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpRequest, HttpEvent } from '@angular/common/http';
 import { map, catchError, tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import swal from "sweetalert2";
-// import { of, Observable } from 'rxjs';
-// import { map } from 'rxjs/operators';
-// import { CLIENTES } from './clientes.json';
 
 @Injectable({
   providedIn: 'root'
@@ -20,10 +15,6 @@ export class ClienteService {
 
   constructor(private http: HttpClient, private router: Router) { }
 
-  getRegiones(): Observable<Region[]> {
-    return this.http.get<Region[]>(this.urlEndpoint + '/regiones');
-  }
-
   getClientes(page: number): Observable<any> {
     return this.http.get(this.urlEndpoint + '/page/' + page).pipe(
 
@@ -32,17 +23,6 @@ export class ClienteService {
         (response.content as Cliente[]).forEach( cliente => {
           console.log(cliente.nombre);
         });
-      }),
-
-      map((response: any) => {
-        (response.content as Cliente[]).map(cliente => {
-          cliente.nombre = cliente.nombre.toUpperCase();
-          // let datePipe = new DatePipe('es-GT');
-          // cliente.createAt = formatDate(cliente.createAt,'dd-mm-yyyy','es-GT');
-          // cliente.createAt = datePipe.transform(cliente.createAt,'EEE dd MMM yyyy');
-          return cliente;
-        });
-        return response;
       }),
 
       tap(response => {
@@ -82,18 +62,6 @@ export class ClienteService {
     );
   }
 
-  /* PRIMER METODO
-  update(cliente: Cliente): Observable<any>{
-    return this.http.put<any>(`${this.urlEndpoint}/${cliente.id}`, cliente, {headers: this.httpHeaders}).pipe(
-      catchError(e => {
-        console.error(e.error.mensaje);
-        swal.fire(e.error.mensaje, e.error.error, 'error');
-        return throwError(e);
-      })
-    )
-  }  PRIMER METODO */
-
-  // SEGUNDO METODO
   update(cliente: Cliente): Observable<Cliente>{
     return this.http.put(`${this.urlEndpoint}/${cliente.id}`, cliente, {headers: this.httpHeaders}).pipe(
       map((response: any) => response.cliente as Cliente),
@@ -120,7 +88,6 @@ export class ClienteService {
     )
   }
 
-  // subirFoto(archivo: File, id): Observable<Cliente>{
   subirFoto(archivo: File, id): Observable<HttpEvent<{}>>{
     let formData = new FormData();
     formData.append("archivo", archivo);
@@ -130,14 +97,6 @@ export class ClienteService {
       reportProgress: true
     });
     return this.http.request(req);
-    // .pipe(
-    //   map( (response: any) => response.cliente as Cliente),
-    //   catchError(e => {
-    //     console.error(e.error.mensaje);
-    //     swal.fire(e.error.mensaje, e.error.error, 'error');
-    //     return throwError(e);
-    //   })
-    // );
   }
 
 }
