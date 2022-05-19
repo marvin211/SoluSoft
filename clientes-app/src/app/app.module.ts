@@ -26,6 +26,7 @@ import { InicioComponent } from './inicio/inicio.component';
 import { ProductosComponent } from './productos/productos.component';
 import { Form2Component } from './productos/form2.component';
 import { DetalleProdComponent } from './productos/detalle-prod/detalle-prod.component';
+import { PaginacionComponent } from './paginacion/paginacion.component';
 
 registerLocaleData(localeES, 'es-GT');
 
@@ -37,6 +38,9 @@ const routes: Routes = [
   {path: 'clientes/form', component: FormComponent},
   {path: 'clientes/form/:id', component: FormComponent},
   {path: 'productos', component: ProductosComponent},
+  {path: 'productos/page/:page', component: ProductosComponent},
+  {path: 'productos/form2', component: Form2Component},
+  {path: 'productos/form2/:id', component: Form2Component},
   {path: 'solusoft', component: DirectivaComponent}
 ];
 
@@ -53,7 +57,8 @@ const routes: Routes = [
     InicioComponent,
     ProductosComponent,
     Form2Component,
-    DetalleProdComponent
+    DetalleProdComponent,
+    PaginacionComponent
   ],
   imports: [
     BrowserModule,

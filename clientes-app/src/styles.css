@@ -12,3 +12,17 @@ body{
 
 /* html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */
+
+/* Estilo del scrollbar */
+::-webkit-scrollbar{
+  width: 12px;
+}
+
+::-webkit-scrollbar-track{
+  background: #212529;
+}
+
+::-webkit-scrollbar-thumb{
+  background: #d6ccc2;
+  border-radius: 30px;
+}
