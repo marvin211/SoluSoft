@@ -46,8 +46,8 @@ export class ProductosComponent implements OnInit {
   delete(producto: Producto): void {
     const swalWithBootstrapButtons = swal.mixin({
       customClass: {
-        confirmButton: "btn btn-success",
-        cancelButton: "btn btn-danger",
+        confirmButton: "btn btn-success mx-3",
+        cancelButton: "btn btn-danger mx-3",
       },
       buttonsStyling: false,
     });

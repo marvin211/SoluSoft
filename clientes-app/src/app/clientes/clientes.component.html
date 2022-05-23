@@ -16,12 +16,12 @@
     <table class="table table-bordered table-hover" *ngIf="clientes?.length>0">
       <thead>
         <tr>
-          <th>Id</th>
+          <th style="text-align: center;">Id</th>
           <th>Nombre</th>
           <th>Apellido</th>
           <th>NIT</th>
           <th>Teléfono</th>
-          <!-- <th>Fecha</th> -->
+          <th>Factura</th>
           <th>Editar</th>
           <th>Eliminar</th>
         </tr>
@@ -29,13 +29,16 @@
       <tbody>
         <tr *ngFor="let cliente of clientes">
           <!-- Dejar el ID como botón para acceder a los detalles del cliente -->
-          <td> <button type="button" (click)="abrirModal(cliente)" class="btn btn-outline-secondary btn-sm">
-              {{ cliente.id }} </button> </td>
+          <td style="text-align: center;">
+            <button type="button" (click)="abrirModal(cliente)" class="btn btn-outline-secondary btn-sm">{{ cliente.id }}</button>
+          </td>
           <td>{{ cliente.nombre }}</td>
           <td>{{ cliente.apellido }}</td>
           <td>{{ cliente.nit }}</td>
           <td>{{ cliente.telefono }}</td>
-          <!-- <td>{{ cliente.createAt | date:"dd/MM/yyyy"}}</td> -->
+          <td>
+            <button type="button" class="btn btn-outline-success btn-sm" [routerLink]="['/facturas/form', cliente.id]">Crear</button>
+          </td>
           <td>
             <button type="button" name="editar" [routerLink]="['/clientes/form', cliente.id]" class="btn btn-outline-primary btn-sm">Editar</button>
           </td>

@@ -12,7 +12,7 @@ import { PaginatorComponent } from './paginator/paginator.component';
 import { ClienteService } from './clientes/cliente.service';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { registerLocaleData } from '@angular/common';
 import localeES from '@angular/common/locales/es-GT';
@@ -27,6 +27,12 @@ import { ProductosComponent } from './productos/productos.component';
 import { Form2Component } from './productos/form2.component';
 import { DetalleProdComponent } from './productos/detalle-prod/detalle-prod.component';
 import { PaginacionComponent } from './paginacion/paginacion.component';
+import { DetalleFacturaComponent } from './facturas/detalle-factura.component';
+import { FacturasComponent } from './facturas/facturas.component';
+
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 registerLocaleData(localeES, 'es-GT');
 
@@ -41,6 +47,8 @@ const routes: Routes = [
   {path: 'productos/page/:page', component: ProductosComponent},
   {path: 'productos/form2', component: Form2Component},
   {path: 'productos/form2/:id', component: Form2Component},
+  {path: 'facturas/:id', component: DetalleFacturaComponent},
+  {path: 'facturas/form/:clienteId', component: FacturasComponent},
   {path: 'solusoft', component: DirectivaComponent}
 ];
 
@@ -58,14 +66,17 @@ const routes: Routes = [
     ProductosComponent,
     Form2Component,
     DetalleProdComponent,
-    PaginacionComponent
+    PaginacionComponent,
+    DetalleFacturaComponent,
+    FacturasComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot(routes),
-    BrowserAnimationsModule, MatDatepickerModule, MatMomentDateModule //, MatNativeDateModule
+    BrowserAnimationsModule, MatDatepickerModule, MatMomentDateModule, //, MatNativeDateModule
+    ReactiveFormsModule, MatAutocompleteModule, MatInputModule, MatFormFieldModule
   ],
   providers: [
     ClienteService,

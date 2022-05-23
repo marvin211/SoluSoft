@@ -47,7 +47,7 @@
       <!-- Boton Crear y Editar -->
       <div class="form-group row">
         <div class="col-sm-6">
-          <button class="btn btn-primary" role="button" (click)='create()' *ngIf="!producto.id else elseBlock" [disabled]="!formularioProducto.form.valid">Crear</button>
+          <button class="btn btn-success" role="button" (click)='create()' *ngIf="!producto.id else elseBlock" [disabled]="!formularioProducto.form.valid">Crear</button>
           <ng-template #elseBlock>
               <button class="btn btn-primary" role="button" (click)='update()' [disabled]="!formularioProducto.form.valid">Editar</button>
           </ng-template>

@@ -14,7 +14,7 @@ body{
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */
 
 /* Estilo del scrollbar */
-::-webkit-scrollbar{
+/* ::-webkit-scrollbar{
   width: 12px;
 }
 
@@ -25,4 +25,4 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */
 ::-webkit-scrollbar-thumb{
   background: #d6ccc2;
   border-radius: 30px;
-}
+} */

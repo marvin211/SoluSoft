@@ -1,3 +1,5 @@
+import { Factura } from '../facturas/models/factura';
+
 export class Cliente {
   id: number;
   nombre: string;
@@ -6,4 +8,5 @@ export class Cliente {
   telefono: string;
   createAt: string;
   foto: string;
+  facturas: Array<Factura> = [];
 }

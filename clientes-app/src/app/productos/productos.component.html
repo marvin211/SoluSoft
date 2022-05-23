@@ -29,7 +29,7 @@
         <tr *ngFor="let producto of productos">
           <td style="text-align: center;">{{ producto.id }}</td>
           <td>{{ producto.nombre }}</td>
-          <td>Q.{{ producto.precio }}</td>
+          <td>Q {{ producto.precio }}</td>
           <td>
             <button type="button" (click)="abrirModal(producto)" class="btn btn-outline-success btn-sm">Ver</button>
           </td>
