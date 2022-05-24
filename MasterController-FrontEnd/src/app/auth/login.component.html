@@ -1,0 +1,49 @@
+<app-header></app-header>
+<div class="container my-3 wrap">
+<div class="text-center" *ngIf="isLogged; else loggedOut">
+    
+    <div class="text-center hero">
+        <div>
+            <h2 class="sesion">Ya has iniciado sesión {{nombreUsuario}}</h2>
+        </div>
+    </div>
+</div>
+
+<ng-template #loggedOut>
+    <div class="container d-flex justify-content-center">
+        <div class="card">
+            <div class="card-header">
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                      <a class="nav-link active" routerLink="/login">Iniciar Sesión</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" routerLink="/registro">Crear Cuenta</a>
+                    </li>
+
+                  </ul>
+            </div>
+            <div class="card-body">
+                <form #f="ngForm" (ngSubmit)="onLogin()" novalidate>
+                    <div class="form-group">
+                        <label for="nombreUsuario">Nombre de Usuario</label>
+                        <input type="text" name="nombreUsuario" id="nombreUsuario" class="form-control"
+                        [(ngModel)]="nombreUsuario" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="password">Contraseña</label>
+                        <input type="password" name="password" id="password" class="form-control"
+                        [(ngModel)]="password" required>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-outline-success btn-block" [disabled]="!f.valid"> <i class="bi bi-arrow-right-square"></i> 
+                            Iniciar Sesión</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</ng-template>
+</div>
+<app-footer></app-footer>

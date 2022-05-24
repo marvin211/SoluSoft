@@ -1,0 +1,66 @@
+<app-header></app-header>
+<div class="container my-3 wrap">
+<div class="card bg-ligth" *ngIf="factura">
+  <div class="card-header">
+    <h3>
+      {{ titulo }}: {{ factura.descripcion }}
+    </h3>
+  </div>
+  <div class="card-body">
+    <h4 class="card-title">
+      <a [routerLink]="['/clientes']" class="btn btn-outline-info">&laquo; Regresar</a>
+    </h4>
+
+    <ul class="list-group my-2">
+      <li class="list-group-item list-group-item-primary"><b>Datos del cliente</b></li>
+      <li class="list-group-item"><b>Nombre:</b> {{ factura.cliente.nombre }}</li>
+      <li class="list-group-item"><b>Apellido:</b> {{ factura.cliente.apellido }}</li>
+    </ul>
+
+    <ul class="list-group my-2">
+      <li class="list-group-item list-group-item-primary"><b>Datos de la factura</b></li>
+      <li class="list-group-item"><b>Folio:</b> {{ factura.id }}</li>
+      <li class="list-group-item"><b>Descripción:</b> {{ factura.descripcion }}</li>
+      <li class="list-group-item"><b>Fecha:</b> {{ factura.createAt | date:"fullDate" }}</li>
+    </ul>
+
+    <table class="table table-hover table-bordered my-3">
+      <thead class="table-primary">
+        <tr>
+          <th>Producto</th>
+          <th>Precio</th>
+          <th>Cantidad</th>
+          <th>Sub-total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of factura.items">
+          <td>{{ item.producto.nombre }}</td>
+          <td>Q {{ item.producto.precio }}</td>
+          <td>{{ item.cantidad}}</td>
+          <td>Q {{ item.importe }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="row">
+      <div class="col">
+        <div class="card border-light mb-4" style="max-width: 400px;">
+          <div class="card card-header bg-primary bg-opacity-25">
+            <b>Observaciones</b>
+          </div>
+          <div class="card card-body">
+            <p *ngIf="!factura.observacion" class="sinob">Ninguna observación</p>
+            <p *ngIf="factura.observacion">{{ factura.observacion }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <h5>Total: Q {{ factura.total }}</h5>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+<app-footer></app-footer>

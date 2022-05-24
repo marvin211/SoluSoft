@@ -1,0 +1,28 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+
+h1.nombre-sitio{
+    font-size: 4rem;
+    font-style: italic;
+    /* text-transform: uppercase; */
+    font-family:  -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    font-weight: 700;
+    color:#051968;
+  }
+
+h1.nombre-sitio span{
+    color: #0398e0;
+}
+
+ /* Header */
+ div.hero{
+    background-image: url(../img/compumaster.jpg);
+    height:100vh;/*Toma el 100% de altura de la ventana*/
+    background-position: top center;
+    background-size: cover;
+  }
+  

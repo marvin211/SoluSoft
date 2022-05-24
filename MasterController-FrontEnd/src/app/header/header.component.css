@@ -1,0 +1,17 @@
+
+div.header-container {
+    width: 95%;
+    margin: 0 auto;
+}	
+
+.iconos{
+    margin-right: .2rem;
+}
+
+.lista-margin li{
+    margin-right: 1rem;
+}
+
+.lista-margin li :last-of-type{
+    margin-right: 0rem;
+}
